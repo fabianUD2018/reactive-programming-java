@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charser="utf-8">
+	<title th:text="${titulo}"></title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/listar}">listar</a>
+		<form th:action="@{/form}" method="POST" th:object="${producto}">
+			<div>
+				<label>
+					nombre
+				</label>
+				<div>
+					<input type="text" th:field="*{nombre}" />
+				</div>
+			</div>
+			<div>
+				<label> precio
+				</label>
+				<div>
+					<input type="number" th:field="*{precio}" />
+				</div>
+			</div>
+			<div>
+				<label>fecha
+				</label>
+				<div>
+					<input type="date" th:field="*{createdAt}" />
+				</div>
+			</div>
+			<div>
+				<label>Categoria
+				</label>
+				<div>
+					<select th:field="*{categoria.id}">
+						<option th:each = "categoria: ${categorias}" th:value ="${categoria.id}" th:text="${categoria.nombre}">
+						</option>
+					</select>
+				</div>
+			</div>
+			<div>
+				<div>
+					<input type="submit" value="crear" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
